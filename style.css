@@ -1,3 +1,43 @@
+.content {
+    width: 50%;
+    margin: auto;
+}
 .start-screen {
     text-align: center;
+}
+
+.start-screen p {
+    font-size: 20px;
+}
+
+.start-screen button {
+    color:#fff;
+    font-size: 20px;
+    background-color: navy;
+    border-radius: 7px;
+    height: 40px;
+    width: 15%;
+}
+
+
+
+.question-screen h1 {
+    text-align: center
+}
+
+ul {
+    list-style: none;
+    color:#fff
+    
+}
+
+ul button{
+    color:#fff;
+    font-size: large;
+    text-align: left;
+    background-color: navy;
+    height: 40px;
+    width: 30%;
+    margin-bottom: 3px;
+    border-radius: 7px;
 }

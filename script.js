@@ -1,4 +1,8 @@
 var contentArea = document.getElementsByClassName('content')[0];
+var messageArea = document.getElementsByClassName('message')[0];
+var timerArea = document.getElementsByClassName('timer')[0];
+var currentTime = 75;
+var timer;
 
 var questions = [
     {
@@ -28,8 +32,6 @@ var questions = [
     },
 ];
 
-
-
 function createStartScreen() {
     contentArea.innerHTML = '';
 
@@ -51,11 +53,23 @@ function createStartScreen() {
     btnEl.textContent = 'Start Quiz';
     btnEl.addEventListener('click', function () {
         createQuestionScreen(0);
+
+        timerArea.textContent = currentTime;
+
+        timer = setInterval(() => {
+            currentTime--;
+            timerArea.textContent = currentTime;
+            if (currentTime === 0) {
+                clearInterval(timer);
+                createEndScreen();
+            }
+
+        }, 1000);
+
     });
     contentContainer.appendChild(btnEl);
 
     contentArea.appendChild(contentContainer);
-
 
 }
 
@@ -63,16 +77,20 @@ function createEndScreen() {
     contentArea.innerHTML = '';
 
     var contentContainer = document.createElement('div')
-    contentContainer.classlist = 'start,screen';
+    contentContainer.classlist = 'end-screen';
 
     var h3El = document.createElement('h3')
     h3El.textContent = 'All Done'
     contentContainer.appendChild(h3El)
 
     var pEl_1 = document.createElement('p');
-    pEl_1.textContent = 'Your final score is _';
+    pEl_1.textContent = 'Your final score is ' + currentTime;
     var pEl_2 = document.createElement('p');
     pEl_2.textContent = 'enter initials';
+
+    var h4El = document.createElement('div')
+    h4El.classList = 'initials';
+
     contentContainer.appendChild(pEl_1);
     contentContainer.appendChild(pEl_2);
 
@@ -98,22 +116,30 @@ function createQuestionScreen(questionIndex) {
         btnEl.textContent = (i + 1) + ". " + answers[i];
         btnEl.dataset.answer = answers[i];
         btnEl.addEventListener('click', function (event) {
-            if (questionIndex === (questions.length - 1)) {
-                createEndScreen();
+            if (event.target.dataset.answer === questions[questionIndex].correctAnswer) {
+                var h2El = document.createElement('h2');
+                h2El.textContent = "Correct!";
+                messageArea.appendChild(h2El);
+                setTimeout(function () {
+                    h2El.remove();
+                }, 3000);
+            }
+            else {
+                currentTime = currentTime - 10;
+                var h2El = document.createElement('h2');
+                h2El.textContent = "Wrong!";
+                messageArea.appendChild(h2El);
+                setTimeout(function () {
+                    h2El.remove();
+                }, 3000);
             }
 
+            if (questionIndex === (questions.length - 1)) {
+                clearInterval(timer);
+                createEndScreen();
+            }
             else {
-                if (event.target.dataset.answer === questions[questionIndex].correctAnswer) {
-                    createQuestionScreen(questionIndex + 1);
-                }
-                else {
-                    var h2El = document.createElement('h2');
-                    h2El.textContent = "Wrong!";
-                    contentContainer.appendChild(h2El);
-                    setTimeout(function () {
-                        h2El.remove();
-                    }, 3000);
-                }
+                createQuestionScreen(questionIndex + 1);
             }
         });
         liEl.appendChild(btnEl);
