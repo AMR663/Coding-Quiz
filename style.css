@@ -1,1 +1,79 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+}
 
+.header a {
+    text-align: left;
+    text-decoration: none;
+}
+
+.content, 
+.message {
+    width: 50%;
+    margin: auto;
+}
+.start-screen {
+    text-align: center;
+}
+
+.start-screen p {
+    font-size: 20px;
+}
+
+.start-screen button,
+ul button {
+    color:#fff;
+    font-size: 20px;
+    background-color: navy;
+    border-radius: 7px;
+    height: 40px;
+    width: 15%;
+}
+
+
+
+.question-screen h1 {
+    text-align: center
+}
+
+ul {
+    list-style: none;
+    color:#fff
+    
+}
+
+ul button{
+    font-size: large;
+    text-align: left;
+    width: 30%;
+    margin-bottom: 3px;
+}
+
+.message h2 {
+    border-top: 1px solid #000;
+}
+
+.end-screen  button,
+.Scoreboard button {
+    color:#fff;
+    margin-left: 10px;
+    background-color: navy;
+    height: 30px;
+    border-radius: 7px;
+}
+
+.end-screen  button {
+    width: 10%;
+}
+
+.end-screen h3,
+.Scoreboard h4 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.Scoreboard ol {
+    background-color: lightgrey;
+    width: 30%
+}
