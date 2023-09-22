@@ -1,4 +1,15 @@
-.content {
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header a {
+    text-align: left;
+    text-decoration: none;
+}
+
+.content, 
+.message {
     width: 50%;
     margin: auto;
 }
@@ -10,7 +21,8 @@
     font-size: 20px;
 }
 
-.start-screen button {
+.start-screen button,
+ul button {
     color:#fff;
     font-size: 20px;
     background-color: navy;
@@ -32,12 +44,36 @@ ul {
 }
 
 ul button{
-    color:#fff;
     font-size: large;
     text-align: left;
-    background-color: navy;
-    height: 40px;
     width: 30%;
     margin-bottom: 3px;
+}
+
+.message h2 {
+    border-top: 1px solid #000;
+}
+
+.end-screen  button,
+.Scoreboard button {
+    color:#fff;
+    margin-left: 10px;
+    background-color: navy;
+    height: 30px;
     border-radius: 7px;
+}
+
+.end-screen  button {
+    width: 10%;
+}
+
+.end-screen h3,
+.Scoreboard h4 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.Scoreboard ol {
+    background-color: lightgrey;
+    width: 30%
 }
